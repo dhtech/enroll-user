@@ -3,28 +3,33 @@ from bottle import Bottle, run, request, template, debug, static_file
 import os
 import sys
 import logging
-
-syslog_address = '127.0.0.1'
-
-#logger = logging.getLogger("usersubmit")
-#logger.setLevel(logging.INFO)
-#formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-#handler = logging.SysLogHandler(syslog_address, facility=7)
-#handler.setFormatter(formatter)
-#logger.addHandler(handler)
+import requests
 
 dirname = os.path.dirname(sys.argv[0])
 
 app = Bottle()
 debug(True)
 
+fusionserver = os.environ('fusionserver')
+fusionuser = os.environ('fusionuser')
+fusionpassword = os.environ('fusionpassword')
+fusionurl = 'https://{}/jsonrpc.php'.format(fusionserver)
+
+
+def create_user(username, password, ccousername, firstname, lastname, googleemail, primaryemail, phone, city, country):
+  res = reuests.post(fusionurl, fusionuser, fusionpassword)
+
+
 @app.route('/static/css/<filename>')
 def send_css(filename):
+  print('dirname {} static {} filename {}'.format(dirname, '/static/css/', filename))
   return static_file(filename, root=dirname+'/static/css/')
+
 
 @app.route('/static/js/<filename>')
 def send_js(filename):
   return static_file(filename, root=dirname+'/static/js/')
+
 
 @app.route('/submit', method='POST')
 def submit():
@@ -43,7 +48,9 @@ def submit():
     print('user failed to validate all the fields')
     return "all fields are mandatory, please try again"
   print('submit {} {}'.format(username, password))
+  res = create_user(username, password, ccousername, firstname, lastname, googleemail, primaryemail, phone, city, country)
   return
+
 
 @app.route('/')
 def index():
