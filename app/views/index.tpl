@@ -14,13 +14,13 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1>DreamHack Tech user registry</h1>
+    <h1>DreamHack Tech user registry (volunteer)</h1>
     <p>Please fill in all of the fields</p>
-    <p>You will not be able to alter the submission once you press submit</p>
-    <p>GDPR is in affect, all your data belongs to us (that you will submit)</p>
+    <p>You cannot alter the submission once you press submit</p>
+    <p>GDPR is in affect, all your data are belong to us (that you will submit)</p>
     <p>All data submitted here will be stored in our LDAP service, and additional group memebership will be added</p>
-    <p>if you get accepted to dreamhack tech, you will be able to se all data of yourself in the self service portal</p>
-    <p>You can alse choose to be forgotten, but implise that you cannot work for dreamhack tech anymore</p>
+    <p>If you get accepted to dreamhack tech, you will be able to se all data of yourself in the self service portal</p>
+    <p>You can alse choose to be forgotten, but implies that you cannot work for DreamHack Tech anymore</p>
   </div>
   <form action="/submit" method="post">
     <div class="form-group">
@@ -32,7 +32,7 @@
       <input type="password" class="form-control" id="password" placeholder="Must contain at least one uppercase and one lowercase letter, and at least 15 or more characters" name="password" pattern="(?=.*[a-z])(?=.*[A-Z]).{15,}" required>
     </div>
     <div class="form-group">
-      <label for="text">Username in dreamhack crew corner:</label>
+      <label for="text">Username in dreamhack crew corner ( https://dreamhack.com/crew ):</label>
       <input type="text" class="form-control" id="ccousername" placeholder="Your Dreamhack Crew Corner Username" name="ccousername" required>
     </div>
     <div class="form-group">
